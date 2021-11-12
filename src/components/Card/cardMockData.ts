@@ -32,7 +32,7 @@ export const cardMockData: Accommodation = {
             "currency": "AUD"
         },
         "cancellationOption": {
-            "cancellationType": "NOT_REFUNDABLE"
+            "cancellationType": "FREE_CANCELLATION"
         }
     }
 }
