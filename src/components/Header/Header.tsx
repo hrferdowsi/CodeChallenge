@@ -1,35 +1,32 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {
     Stack,
     ButtonBase,
     Grid,
     Typography,
-    Select,
     MenuItem,
     FormControl,
 } from "@mui/material";
-import qantasLogo from "../utils/qantasLogo.png";
-import {Wrapper, Img} from './common';
+import Select, {SelectChangeEvent} from '@mui/material/Select';
+import qantasLogo from "../../images/qantasLogo.png";
+import {Wrapper, Img, logoSize, SPACING} from '../../styles/index';
 
 
-type headerProps = {
+interface HeaderProps {
     list: Accommodation[],
-    order: searchOrder,
-    setOrder: any
+    order: SearchOrder,
+    onOrderChange: (val: SearchOrder) => void;
 }
 
+const Header: React.FC<HeaderProps> = ({list, order, onOrderChange}) => {
 
-const Header: React.FC<headerProps> = ({list, order, setOrder}) => {
-    const handleChange = useCallback((event) => {
-        setOrder(event.target.value);
-    }, [ setOrder])
-
+    const handleChange = (event: SelectChangeEvent) => onOrderChange(event.target.value as SearchOrder);
     return (
         <Wrapper>
-            <Grid container direction="row" spacing={1}>
+            <Grid container direction="row" spacing={SPACING}>
                 <Grid item>
                     <Stack>
-                        <ButtonBase sx={{width: 145, height: 60}}>
+                        <ButtonBase sx={logoSize}>
                             <Img alt={qantasLogo} src={qantasLogo} loading={"lazy"}/>
                         </ButtonBase>
                         <Typography variant="subtitle1" gutterBottom>
@@ -38,7 +35,7 @@ const Header: React.FC<headerProps> = ({list, order, setOrder}) => {
                     </Stack>
                 </Grid>
                 <Grid item sm container justifyContent="flex-end">
-                    <Stack direction="row" alignItems="flex-end" spacing={1}>
+                    <Stack direction="row" alignItems="flex-end" spacing={SPACING}>
                         <Typography variant="subtitle1" gutterBottom>
                             Sort by:
                         </Typography>

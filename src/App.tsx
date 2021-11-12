@@ -1,16 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import * as data from '../src/utils/data.json';
+import * as data from './mockData/data.json';
 import * as _ from 'lodash'
-import Card from './components/Card';
-import Header from "./components/Header";
-import {Wrapper} from './components/common';
+import Card from './components/Card/Card';
+import Header from "./components/Header/Header";
 
+import {Wrapper} from './styles/styled';
 import './App.css';
-import {
-    Paper,
-    Stack,
-    CssBaseline,
-} from '@mui/material';
+import {Paper, Stack, CssBaseline,} from '@mui/material';
 
 
 const sorter = (order: string) => {
@@ -25,7 +21,7 @@ const sorter = (order: string) => {
 
 
 function App() {
-    const [order, setOrder] = useState<searchOrder>("lh");
+    const [order, setOrder] = useState<SearchOrder>("lh");
     const [list, setList] = useState<Accommodation[]>([])
 
     useEffect(() => {
@@ -38,7 +34,7 @@ function App() {
         <div className="App">
             <Paper sx={{width: 800, maxWidth: '100%', padding: "10px"}}>
                 <CssBaseline/>
-                <Header list={list} order={order} setOrder={setOrder}/>
+                <Header list={list} order={order} onOrderChange={setOrder}/>
                 <Stack>
                     {list?.map((hotel: Accommodation) => (
                             <Wrapper key={hotel.id}>

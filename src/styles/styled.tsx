@@ -1,4 +1,5 @@
 import {Paper, styled} from "@mui/material";
+import {SxProps} from "@mui/system/styleFunctionSx/styleFunctionSx";
 
 
 export const Wrapper = styled(Paper)(({theme}) => ({
@@ -15,4 +16,15 @@ export const Img = styled('img')({
     maxHeight: '100%',
 });
 
+
+export const ImgRibbonStyle: SxProps = {
+    fontSize: 12, // font size: sm,lg
+    bgcolor: 'white',
+    color: 'red',
+    p: 0.5,
+    position: 'absolute',
+    top: 20,
+    left: 0,
+    zIndex: 'tooltip',
+}
 

@@ -2,14 +2,14 @@ import React from 'react';
 import {Box, Link, Stack, ButtonBase, Grid, Rating, Typography} from "@mui/material";
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import CircleSharpIcon from '@mui/icons-material/CircleSharp';
-import {Img} from './common';
+import {Img, cardImageSize, ImgRibbonStyle, SPACING, SPACING_TWO} from '../../styles';
 
 
-interface cardsProps {
+interface CardsProps {
     data: Accommodation;
 }
 
-const Card: React.FC<cardsProps> = ({data}) => {
+const Card: React.FC<CardsProps> = ({data}) => {
 
     const previewURL = data.property.previewImage.url ?? "//:0";
 
@@ -23,7 +23,7 @@ const Card: React.FC<cardsProps> = ({data}) => {
                 emptyIcon={<CircleOutlinedIcon fontSize="inherit"/>}
                 readOnly
                 size={"small"}
-                data-testid="rating_circle"
+                data-testid="rating"
             /> :
             <Rating
                 name="read-only"
@@ -31,33 +31,22 @@ const Card: React.FC<cardsProps> = ({data}) => {
                 precision={0.5}
                 readOnly
                 size={"small"}
-                data-testid="rating_star"
+                data-testid="rating"
             />
     )
 
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={SPACING}>
             <Grid item>
-                <ButtonBase href="#" sx={{width: 145, height: 125}} data-testid="hotel_picture">
+                <ButtonBase href="#" sx={cardImageSize} data-testid="hotel_picture">
                     <Img alt={data.property.previewImage.caption} src={previewURL} loading={"lazy"}/>
-                    <Box
-                        sx={{
-                            fontSize: 12,
-                            bgcolor: 'white',
-                            color: 'red',
-                            p: 0.5,
-                            position: 'absolute',
-                            top: 20,
-                            left: 0,
-                            zIndex: 'tooltip',
-                        }}
-                    >
+                    <Box sx={ImgRibbonStyle}>
                         {data.offer.promotion.title}
                     </Box>
                 </ButtonBase>
             </Grid>
             <Grid item xs={11} sm container>
-                <Grid item xs container direction="column" spacing={2}>
+                <Grid item xs container direction="column" spacing={SPACING_TWO}>
                     <Grid item xs data-testid="property_title">
                         <Typography gutterBottom variant="body1" component="div">
                             <Link href="#" underline="none"

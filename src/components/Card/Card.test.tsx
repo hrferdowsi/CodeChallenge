@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {mount} from 'enzyme';
-import Card from '../components/Card';
-import {cardMockData} from '../utils/TestData/CardMockData';
+import Card from './Card';
+import {cardMockData} from './cardMockData';
 
-import * as mockData from '../utils/data.json';
+import * as mockData from '../../mockData/data.json';
 
 import resetAllMocks = jest.resetAllMocks;
 
@@ -12,16 +12,19 @@ describe("Card Component", () => {
     beforeEach(() => {
         resetAllMocks()
     })
-
+    const tree = mount(
+        <Card data={cardMockData}/>
+    )
     test('should render without crash', () => {
-
-        const component = mountWithTheme(<Card data={cardMockData}/>)
-        expect(component).toMatchSnapshot();
+        expect(tree).toMatchSnapshot();
     })
 
-    test("should contain rating_circle", () => {
-
+    test("should contain CircleSharpIcon", () => {
+        const ratingIcon = tree.find("[data-testid='rating']").find("svg")
+        // expect(ratingIcon).toBeDefined()
+        console.log(ratingIcon.debug())
     })
+
     // // manually trigger the callback
     // tree.props.onMouseEnter();
     // // re-rendering

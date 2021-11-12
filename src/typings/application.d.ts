@@ -3,6 +3,12 @@ declare module "*.png" {
     export default value;
 }
 
+type RatingType = "star" | "self";
+type PromotionType = "CAMPAIGN" | "MEMBER";
+type CancellationType = "FREE_CANCELLATION" | "NOT_REFUNDABLE";
+type PromotionTitle = "Exclusive Deal" | "Bonus Points" | "Red Hot";
+type SearchOrder = "hl" | "lh";
+
 type Accommodation = {
     "id": string,
     "property": {
@@ -38,9 +44,3 @@ type Accommodation = {
         }
     }
 }
-
-type RatingType = "star" | "self";
-type PromotionType = "CAMPAIGN" | "MEMBER";
-type CancellationType = "FREE_CANCELLATION" | "NOT_REFUNDABLE";
-type PromotionTitle = "Exclusive Deal" | "Bonus Points" | "Red Hot";
-type searchOrder = "hl" | "lh";
