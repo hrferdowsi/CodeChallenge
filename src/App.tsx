@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import * as data from './mockData/data.json';
-import * as _ from 'lodash'
+import {get, toNumber} from "lodash";
+
+import apiResponse from './mockData/data.json';
 import Card from './components/Card/Card';
 import Header from "./components/Header/Header";
+import {Paper, Stack, CssBaseline,} from '@mui/material';
 
 import {Wrapper} from './styles/styled';
 import './App.css';
-import {Paper, Stack, CssBaseline,} from '@mui/material';
 
 
-const sorter = (order: string) => {
-    return (a: number, b: number) => {
-        const val1 = _.get(a, 'offer.displayPrice.amount');
-        const val2 = _.get(b, 'offer.displayPrice.amount');
-        const output = val2 - val1;
-        if (order === "hl") return output;
-        return -1 * output;
+export const sorter = (order: SearchOrder) => {
+    return (hotel1: Accommodation, hotel2: Accommodation) => {
+        const val1 = toNumber(get(hotel1, 'offer.displayPrice.amount')) || 0;
+        const val2 = toNumber(get(hotel2, 'offer.displayPrice.amount')) || 0;
+        if (order === "hl") return val2 - val1;
+        return val1 - val2;
     }
 }
 
@@ -25,7 +25,7 @@ function App() {
     const [list, setList] = useState<Accommodation[]>([])
 
     useEffect(() => {
-        const sortedData = [...data.results].sort(sorter(order) as any)
+        const sortedData = [...apiResponse.results as Accommodation[]].sort(sorter(order))
         setList(sortedData as Accommodation[]);
     }, [order])
 
@@ -34,7 +34,7 @@ function App() {
         <div className="App">
             <Paper sx={{width: 800, maxWidth: '100%', padding: "10px"}}>
                 <CssBaseline/>
-                <Header list={list} order={order} onOrderChange={setOrder}/>
+                <Header totalResults={list.length} order={order} onOrderChange={setOrder}/>
                 <Stack>
                     {list?.map((hotel: Accommodation) => (
                             <Wrapper key={hotel.id}>

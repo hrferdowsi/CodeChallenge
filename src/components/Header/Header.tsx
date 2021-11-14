@@ -13,12 +13,12 @@ import {Wrapper, Img, logoSize, SPACING} from '../../styles/index';
 
 
 interface HeaderProps {
-    list: Accommodation[],
+    totalResults: number,
     order: SearchOrder,
     onOrderChange: (val: SearchOrder) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({list, order, onOrderChange}) => {
+const Header: React.FC<HeaderProps> = ({totalResults, order, onOrderChange}) => {
 
     const handleChange = (event: SelectChangeEvent) => onOrderChange(event.target.value as SearchOrder);
     return (
@@ -26,11 +26,11 @@ const Header: React.FC<HeaderProps> = ({list, order, onOrderChange}) => {
             <Grid container direction="row" spacing={SPACING}>
                 <Grid item>
                     <Stack>
-                        <ButtonBase sx={logoSize}>
+                        <ButtonBase href="#"  sx={logoSize}>
                             <Img alt={qantasLogo} src={qantasLogo} loading={"lazy"}/>
                         </ButtonBase>
                         <Typography variant="subtitle1" gutterBottom>
-                            {list.length} hotels in Sydney
+                            {totalResults} hotels in Sydney
                         </Typography>
                     </Stack>
                 </Grid>
