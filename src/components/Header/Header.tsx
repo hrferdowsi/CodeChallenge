@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({totalResults, order, onOrderChange}) => 
                         <ButtonBase href="#"  sx={logoSize}>
                             <Img alt={qantasLogo} src={qantasLogo} loading={"lazy"}/>
                         </ButtonBase>
-                        <Typography variant="subtitle1" gutterBottom>
+                        <Typography variant="subtitle1" gutterBottom data-testid='totalResults'>
                             {totalResults} hotels in Sydney
                         </Typography>
                     </Stack>
@@ -44,6 +44,7 @@ const Header: React.FC<HeaderProps> = ({totalResults, order, onOrderChange}) => 
                                 value={order}
                                 onChange={handleChange}
                                 inputProps={{'aria-label': 'Without label'}}
+                                data-testid="selector"
                             >
                                 <MenuItem value={'hl'}>Price High-Low</MenuItem>
                                 <MenuItem value={"lh"}>Price Low-High</MenuItem>

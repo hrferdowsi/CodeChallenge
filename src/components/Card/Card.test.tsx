@@ -22,7 +22,7 @@ describe("Card Component", () => {
         expect(ratingIcon.find('[data-testid="CircleSharpIcon"]').exists()).toBeTruthy()
     })
 
-    test("should check link is available and contain href ", () => {
+    test("should check title link is available and contains href ", () => {
         const title = tree.find('[data-testid="property_title"]').find('a')
         expect(title.prop('href')).toEqual('#')
     })
