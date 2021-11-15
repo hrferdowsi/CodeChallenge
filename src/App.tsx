@@ -25,15 +25,8 @@ function App() {
     const [list, setList] = useState<Accommodation[]>([]);
 
     useEffect(() => {
-        // This useEffect is only to fetch data (in scenarios we don't
-        // have API response) and to restructure the data for its purpose
-        const {results} = apiResponse;
-        setList(results as Accommodation[]);
-    }, [])
-
-    useEffect(() => {
-        //This useEffect will come into effect based on the selected "order"
-        setList(list => list.sort(sorter(order)));
+        const sortedData = [...apiResponse.results as Accommodation[]].sort(sorter(order))
+        setList(sortedData as Accommodation[]);
     }, [order])
 
 

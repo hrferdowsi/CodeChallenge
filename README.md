@@ -1,23 +1,31 @@
-# Getting Started with Create React App
+# Qantas code challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Thi code is written by [Reza Fer](https://www.linkedin.com/in/reza-fer/) as part of the interview process.
+
+## Approach
+
+
+This project was initiated with the create-react-app and more dependencies were added for development and testing. I used webstorm for my IDE therefore codes might look different in VSCode as it uses different formatter. Typings are located under src/typings directory. Application mainly consists of three components of App, Card, Header and their associated test files are located under same directory.
+For unit testing, I used Jest(Enzyme), which its configs are in setupTests.ts
+and jest.config.ts. 
+
+I tried to avoid inline styling and located the styles under the styles' directory. However,
+there might be places where I left the code as it is due to the short of time. In terms of the structure, some files might not be in the order of your like but I tried to follow a general enterprise 
+standard for React Application. Some codes could have broken down into seperated files (like styled components) but I think for this code challenge, the code organised enough.
+
+Please do not hesitate to contact me if you have any questions about this code challenge.
+
 
 ## Available Scripts
 
-In the project directory, you can run:
+### `yarn start / npm run start
 
-### `yarn startA
-
-Runs the app in the development mode.\
+Runs the app in the development mode on port 3000.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
+### yarn test and yarn test:watch
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
 
@@ -27,20 +35,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
